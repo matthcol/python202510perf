@@ -8,5 +8,13 @@
 
 ## IDE
 - PyCharm
-- VSCode + Extensions: Python, Pylance, Python Debugger, Python Environments
+- VSCode + Extensions: 
+    - Python
+    - Pylance
+    - Python Debugger
+    - Python Environments
+    - MyPy Type Checker
+    - Jupyter
+    - Jupyter Keymap
 - Spyder
+- Jupyter Lab/Notebook
