@@ -31,3 +31,37 @@ def test_ne():
 
 def test_another():
     pass
+
+def test_iadd_with_scalar(point_1):
+    point_1 += 2.5
+    assert point_1.x == 6.0
+    assert point_1.y == 4.75
+
+def test_iadd_with_tuple(point_1):
+    point_1 += (2.5, 2.25)
+    assert point_1.x == 6.0
+    assert point_1.y == 4.5
+
+def test_iadd_with_point(point_1):
+    point_1 += Point(2.5, 2.25)
+    assert point_1.x == 6.0
+    assert point_1.y == 4.5
+
+@pytest.mark.parametrize(
+        "rhs",
+        [
+            "a text",
+            False,
+            None
+        ],
+        ids=[
+            "str",
+            "bool",
+            "None"
+        ]
+)
+def test_iadd_with_unsupported_type(point_1, rhs):
+    with pytest.raises(TypeError):
+        # hook: __enter__
+        point_1 += rhs
+    # hook __exit__ : check if exception TypeError happens
