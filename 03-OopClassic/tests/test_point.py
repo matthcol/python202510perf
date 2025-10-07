@@ -108,19 +108,25 @@ def test_radd_with_unsupported_type(point_1, rhs):
 
 
 def test_iadd_with_scalar(point_1):
+    ref = point_1
     point_1 += 2.5
     assert point_1.x == 6.0
     assert point_1.y == 4.75
+    assert ref is point_1 # true inplace
 
 def test_iadd_with_tuple(point_1):
+    ref = point_1
     point_1 += (2.5, 2.25)
     assert point_1.x == 6.0
     assert point_1.y == 4.5
+    assert ref is point_1 # true inplace
 
 def test_iadd_with_point(point_1):
+    ref = point_1
     point_1 += Point(2.5, 2.25)
     assert point_1.x == 6.0
     assert point_1.y == 4.5
+    assert ref is point_1 # true inplace
 
 @pytest.mark.parametrize(
         "rhs",

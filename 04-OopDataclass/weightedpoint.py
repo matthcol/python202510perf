@@ -3,6 +3,6 @@ from dataclasses import dataclass
 from point import Point
 
 
-@dataclass
+@dataclass(kw_only=True)
 class WeightedPoint(Point):
     weight: float = 1.0

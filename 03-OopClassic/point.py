@@ -1,16 +1,17 @@
 # module point
 
+from typing import Self, overload, override
 
-from typing import Self, cast, overload, override
 
-
-class Point:
+class Point: # hérite auto de la classe object
     """ Represents a 2D point with its coordinates x, y
 
         Example:
 
             p = Point(3.5, 5.0)
     """
+
+    # __slots__ = ["x", "y"]
 
     # constructeur
     def __init__(self, x: float, y: float):
@@ -82,9 +83,8 @@ class Point:
     @overload
     def __radd__(self, other: tuple[float, float]) -> Self:...
 
-
     def __radd__(self, other):
-        pass
+        return self.__add__(other)
 
     @overload
     def __iadd__(self, other: 'Point') -> Self:...
