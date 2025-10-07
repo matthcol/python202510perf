@@ -1,7 +1,7 @@
 # module point
 
 
-from typing import Any, override
+from typing import Self, cast, overload, override
 
 
 class Point:
@@ -13,7 +13,7 @@ class Point:
     """
 
     # constructeur
-    def __init__(self, x, y):
+    def __init__(self, x: float, y: float):
         self.x = x
         self.y = y
 
@@ -33,7 +33,8 @@ class Point:
     # * par défaut: ==, != (basées sur l'@ mémoire)
     # * liste correspondance: https://docs.python.org/3/library/operator.html
 
-    def __eq__(self, other: Any) -> bool:
+    @override
+    def __eq__(self, other: object) -> bool:
         # optimisation
         if self is other:
             return True
@@ -44,12 +45,73 @@ class Point:
        
         # sol2: strict
         # if type(other) is not Point:
-        #     return False
-        
+        #     return NotImplemented
         return (self.x ,self.y) == (other.x, other.y)
 
 
+    # TODO: addition avec 1 point, 1 scalaire, 1 tuple
 
+    @overload
+    def __add__(self, other: 'Point') -> Self:...
+
+    @overload
+    def __add__(self, other: float) -> Self:...
+
+    @overload
+    def __add__(self, other: tuple[float, float]) -> Self:...
+
+    def __add__(self, other):
+        if isinstance(other, Point):
+            return Point(x=self.x + other.x, y=self.y + other.y)
+        elif isinstance(other, float):
+            return Point(x=self.x + other, y=self.y + other)
+        elif isinstance(other, tuple) and len(other) == 2:
+            x, y = other
+            if not isinstance(x, float) or not isinstance(y, float):
+                return NotImplemented
+            return Point(x=self.x + x, y=self.y + y)
+        else:
+            return NotImplemented
+
+    @overload
+    def __radd__(self, other: 'Point') -> Self:...
+
+    @overload
+    def __radd__(self, other: float) -> Self:...
+
+    @overload
+    def __radd__(self, other: tuple[float, float]) -> Self:...
+
+
+    def __radd__(self, other):
+        pass
+
+    @overload
+    def __iadd__(self, other: 'Point') -> Self:...
+
+    @overload
+    def __iadd__(self, other: float) -> Self:...
+
+    @overload
+    def __iadd__(self, other: tuple[float, float]) -> Self:...
+
+
+    def __iadd__(self, other):
+        if isinstance(other, Point):
+            self.x += other.x
+            self.y += other.y
+        elif isinstance(other, float):
+            self.x += other
+            self.y += other
+        elif isinstance(other, tuple) and len(other) == 2:
+            x, y = other
+            if not isinstance(x, float) or not isinstance(y, float):
+                return NotImplemented
+            self.x += x
+            self.y += y
+        else:
+            return NotImplemented
+        return self
 
 if __name__ == '__main__':
     p1 = Point(3.5, 4.5)    # calls __new__ then __init__

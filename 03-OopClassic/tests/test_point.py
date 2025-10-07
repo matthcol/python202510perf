@@ -50,12 +50,18 @@ def test_add_with_point(point_1):
         [
             "a text",
             False,
-            None
+            None,
+            (12.3, 12.5, 13.4),
+            (12.5, 'a'),
+            ('a', 12.5),
         ],
         ids=[
             "str",
             "bool",
-            "None"
+            "None",
+            "tuple of length 3",
+            "tuple[float, str]",
+            "tuple[str, float]",
         ]
 )
 def test_add_with_unsupported_type(point_1, rhs):
@@ -80,12 +86,18 @@ def test_radd_with_tuple(point_1):
         [
             "a text",
             False,
-            None
+            None,
+            (12.3, 12.5, 13.4),
+            (12.5, 'a'),
+            ('a', 12.5),
         ],
         ids=[
             "str",
             "bool",
-            "None"
+            "None",
+            "tuple of length 3",
+            "tuple[float, str]",
+            "tuple[str, float]",
         ]
 )
 def test_radd_with_unsupported_type(point_1, rhs):
@@ -115,12 +127,18 @@ def test_iadd_with_point(point_1):
         [
             "a text",
             False,
-            None
+            None,
+            (12.3, 12.5, 13.4),
+            (12.5, 'a'),
+            ('a', 12.5),
         ],
         ids=[
             "str",
             "bool",
-            "None"
+            "None",
+            "tuple of length 3",
+            "tuple[float, str]",
+            "tuple[str, float]",
         ]
 )
 def test_iadd_with_unsupported_type(point_1, rhs):
