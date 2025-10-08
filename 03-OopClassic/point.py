@@ -63,8 +63,10 @@ class Point: # hérite auto de la classe object
 
     def __add__(self, other):
         if isinstance(other, Point):
+            # TODO: use constructor of self (Point or subclass)
             return Point(x=self.x + other.x, y=self.y + other.y)
         elif isinstance(other, float):
+            # TODO: use constructor of self (Point or subclass)
             return Point(x=self.x + other, y=self.y + other)
         elif isinstance(other, tuple) and len(other) == 2:
             x, y = other
@@ -73,6 +75,7 @@ class Point: # hérite auto de la classe object
             return Point(x=self.x + x, y=self.y + y)
         else:
             return NotImplemented
+
 
     @overload
     def __radd__(self, other: 'Point') -> Self:...
@@ -85,6 +88,7 @@ class Point: # hérite auto de la classe object
 
     def __radd__(self, other):
         return self.__add__(other)
+    
 
     @overload
     def __iadd__(self, other: 'Point') -> Self:...
