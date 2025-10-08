@@ -1,6 +1,3 @@
-"""module point
-"""
-
 
 from dataclasses import dataclass, field
 import math
@@ -19,10 +16,6 @@ class Point(Shape):
     x: float = 0.0
     y: float = 0.0
 
-    @override
-    def __str__(self) -> str:
-        return f"{super().__str__()}({self.x}, {self.y})"
-    
     # autre: bool = field(repr=False, default=False)
     # friends: list['Point'] = field(default_factory=list)
 
@@ -41,9 +34,6 @@ class Point(Shape):
 
     def distance(self, other: 'Point') -> float:
         return math.dist((self.x, self.y), (other.x, other.y))
-    
-    def dummy(self):
-        print("dummy from Point")
 
     # méthodes de classes:
     # - solution 1: @staticmethod (pas de meta programmation et d'adaptation 

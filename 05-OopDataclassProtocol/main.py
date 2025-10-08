@@ -71,57 +71,28 @@ def play_with_shapes_and_mesurables() -> None:
     
     for s in shapes:
         print(s.name)
-        if isinstance(s, Mesurable2D):
+        if isinstance(s, Mesurable2D): # nécessite @runtime_checkable
             info_mesurable2D(s)
+        print()
+
+def play_with_shapes_and_mesurables2() -> None:
+    c = Circle(name='C')
+    poly = Polygon(name='ABCD')
+    pt = Point(name='A')
+
+    shapes: list[Shape] = [c, poly, pt]
+    
+    for s in shapes:
+        print(s.name)
+        # verification dynamique (idée)
+        if hasattr(s, 'perimeter') and hasattr(s, 'area'): 
+            info_mesurable2D(s) # type: ignore
         print()
     
 # TODO: match case
 
-# PEP 636: tutorial Pattern Matching
-# https://peps.python.org/pep-0636/
-def play_with_shapes_matching():
-
-    c = Circle(name='C')
-    poly = Polygon(name='ABCD')
-    pt_a = Point(name='A')
-    pt_b = Point(name='B', x=3.0, y=1.0)
-    wp_d = WeightedPoint(name='D')
-    wp_e = WeightedPoint(name='E', weight=30.0)
-
-    shapes: list[Shape] = [wp_d, c, poly, pt_a, pt_b, wp_e]
-    for s in shapes:
-        match s:
-            case WeightedPoint(weight=weight) if weight != 1.0:
-                print("Weighted point avec poids <> 1:", s)
-            case Point(x=x, y=0):
-                print(f"Point sur l'axe des abscisses avec x = {x}")
-            case Point(x=x, y=y):
-                print(f"Point de coordonnées {x} et {y}")
-            case Mesurable2D() as m:
-                print(f"Mesurable 2D: aire={m.area()}, périmètre{m.perimeter()}")
-            case _:
-                print("SKIP:", s)
-
-def play_with_str_repr():
-    pt_a = Point(name='A')
-    pt = Point()
-    wp_e = WeightedPoint(name='E', weight=30.0)
-    cp_f = ColoredPoint(name="F", color="#0CD73F")
-    wcp_h = WeightedColoredPoint(name="H", color="#B01818", weight=25.5)
-    print(pt)
-    print(pt_a)
-    print(repr(pt_a))
-    for p in pt_a, wp_e, cp_f, wcp_h:
-        print(f"version str : {p}  vs version repr : {p!r}")
-        p.dummy()
-        print()
-
-
-
-
-
 # play_with_points()
+
 # play_with_mesurable2D()
-# play_with_shapes_and_mesurables()
-# play_with_shapes_matching()
-play_with_str_repr()
+
+play_with_shapes_and_mesurables2()
