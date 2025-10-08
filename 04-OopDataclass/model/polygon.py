@@ -1,9 +1,9 @@
 from dataclasses import dataclass, field
 from typing import override
 
-from mesurable import Mesurable2D
-from point import Point
-from shape import Shape
+from model.mesurable import Mesurable2D
+from model.point import Point
+from model.shape import Shape
 
 
 @dataclass(kw_only=True)

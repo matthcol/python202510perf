@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from typing import override
 
-from point import Point
+from model.point import Point
 
 
 @dataclass(kw_only=True)

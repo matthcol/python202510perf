@@ -1,13 +1,14 @@
+from model import (
+    Shape,
+    Point,
+    WeightedPoint,
+    ColoredPoint,
+    WeightedColoredPoint,
+    Polygon,
+    Circle,
+    Mesurable2D
+)
 
-
-from circle import Circle
-from coloredpoint import ColoredPoint
-from mesurable import Mesurable2D
-from point import Point
-from polygon import Polygon
-from shape import Shape
-from weightedcoloredpoint import WeightedColoredPoint
-from weightedpoint import WeightedPoint
 
 
 def play_with_points() -> None:

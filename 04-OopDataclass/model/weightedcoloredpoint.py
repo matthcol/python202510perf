@@ -1,9 +1,9 @@
 
 from dataclasses import dataclass
 from typing import override
-from coloredpoint import ColoredPoint
+from model.coloredpoint import ColoredPoint
 # from point import Point
-from weightedpoint import WeightedPoint
+from model.weightedpoint import WeightedPoint
 
 @dataclass(kw_only=True)
 class WeightedColoredPoint(WeightedPoint, ColoredPoint):

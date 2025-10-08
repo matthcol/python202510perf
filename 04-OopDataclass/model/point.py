@@ -6,7 +6,8 @@ from dataclasses import dataclass, field
 import math
 from typing import Self, override
 
-from shape import Shape
+from model.shape import Shape
+# from .shape import Shape
 
 
 @dataclass(
