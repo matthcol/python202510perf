@@ -2,7 +2,7 @@
 name = "geoapp"
 version = "0.1.0"
 description = ""
-authors = ["matthcol <matthias.colin@gmail.com>"]
+authors = ["matthcol <matthias.colin@example.org>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
