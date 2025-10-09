@@ -1,12 +1,14 @@
 from abc import ABC, abstractmethod
 
+import numpy as np
+
 
 class Mesurable1D(ABC):
     """Interface 
     """
     
     @abstractmethod
-    def length(self) -> float:
+    def length(self) -> np.float64:
         ...
 
 class Mesurable2D(ABC):
@@ -14,10 +16,10 @@ class Mesurable2D(ABC):
     """
 
     @abstractmethod
-    def perimeter(self) -> float:
+    def perimeter(self) -> np.float64:
         ...
 
     @abstractmethod
-    def area(self) -> float:
+    def area(self) -> np.float64:
         ...
 
