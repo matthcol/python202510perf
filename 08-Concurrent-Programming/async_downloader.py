@@ -12,6 +12,7 @@ doc_sources = {
     "scrapy": "https://docs.scrapy.org/en/latest/",
 }
 
+# NB: definition de coroutine
 async def get_url_async(url):
     try:
         async with aiohttp.ClientSession() as session:

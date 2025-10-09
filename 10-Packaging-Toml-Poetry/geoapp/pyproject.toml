@@ -1,0 +1,53 @@
+[tool.poetry]
+name = "geoapp"
+version = "0.1.0"
+description = ""
+authors = ["matthcol <matthias.colin@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.13"
+pandas = "^2.3.3"
+numpy = "^2.3.3"
+matplotlib = "^3.10.7"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.4.2"
+pytest-cov = "^7.0.0"
+pyright = "^1.1.406"
+ruff = "^0.14.0"
+
+[tool.pytest.ini_options]
+addopts = "-ra -q --cov=geoapp.model --cov-report=term-missing"
+testpaths = [
+    "tests",
+]
+python_files = [
+    "test_*.py",
+    "*_test.py"
+]
+
+[tool.coverage.run]
+branch = true
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = true
+
+[tool.pyright]
+typeCheckingMode = "basic"
+
+[tool.poetry.scripts]
+geoapp = "geoapp.main:run"
+
+[tool.ruff]
+line-length = 100
+target-version = "py313"
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]  # Erreurs, style, imports
+fixable = ["I", "E"] 
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
